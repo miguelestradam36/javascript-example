@@ -3,14 +3,15 @@ let imagenPrevia = document.getElementById('foto-usuario-previa');
 //Crea el array de DATOS con propiedad y valor
 let datos = {
     'Tipo de Id': 'Cédula física',
-    'Número de Id': '118920056',
+    'Número de Id': '123456789',
+    'Nombre Completo': 'Miguel Ignacio Guzman Lopez',
     'Fecha de nacimiento': '17/09/1991',
     'Género': 'Femenino',
-    'Teléfono': '87249846',
-    'Correo electrónico': 'mfallasp@ucenfotec.ac.cr',
+    'Teléfono': '12348765',
+    'Correo electrónico': 'miguelestradam36@gmail.com',
     'Provincia': 'San José',
     'Cantón': 'San José',
-    'Distrito': 'Mércedez',
+    'Distrito': 'Moravia',
     'Dirección exacta': '300 norte Hospital San Juan de Dios'
 };
 
@@ -69,6 +70,14 @@ document.getElementById("archivo-previo").addEventListener('change', function (e
 
 //Trae la información del elemento <input> con la propiedad FILE
 document.getElementById('Guardar').addEventListener('click', function (e) {
+    let imagenUsuario = document.getElementById('foto-usuario');
+
+    imagenUsuario.src = imagenPrevia.src;
+
+});
+
+//Trae la información del elemento <input> con la propiedad FILE
+document.getElementById('GuardarPerfil').addEventListener('click', function (e) {
     let imagenUsuario = document.getElementById('foto-usuario');
 
     imagenUsuario.src = imagenPrevia.src;

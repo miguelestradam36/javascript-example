@@ -24,7 +24,7 @@
                 </div>
 
                 <div class="row border p-4 d-flex justify-content-center">
-                    <img src="image_default.jpg" id="foto-usuario" class="card-img-top" alt="..." style="max-width: 350px;" />
+                    <img src="data/image_default.jpg" id="foto-usuario" class="card-img-top" alt="..." style="max-width: 350px;" />
                 </div>
 
                 <div class="row col-8 mt-4">
@@ -47,15 +47,15 @@
                     <!-- Mis mascotas -->
                     <div class="row text-center d-grid gap-2 m-2">
                         <button type="button" class="btn btn-dark btn-rounded" data-mdb-toggle="modal"
-                            data-mdb-target="#VentanaModal" style="background: #F7B733">
-                            <i class="fas fa-dog fa-2x me-2"></i> Peliculas/Series vistas
+                            data-mdb-target="#Peliculas" style="background: #F7B733">
+                            <i class="fas fa-film fa-2x me-2"></i> Peliculas/Series vistas
                         </button>
                     </div>
 
                     <!-- Método de pago -->
                     <div class="row text-center d-grid gap-2 m-2">
                         <button type="button" class="btn btn-dark btn-rounded" data-mdb-toggle="modal"
-                            data-mdb-target="#VentanaModal" style="background:  #333333">
+                            data-mdb-target="#PagoEnLinea" style="background:  #333333">
                             <i class="far fa-credit-card fa-2x me-2"></i>Métodos de pago
                         </button>
                     </div>
@@ -86,6 +86,70 @@
             </div>
         </div>
     </section>
+
+    <!-- Series y Peliculas -->
+    <div class="modal fade" id="VentanaModal" data-mdb-backdrop="static" data-mdb-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Cambiar imagen</h5>
+                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="border p-4 d-flex justify-content-center">
+                        <img src="https://mdbootstrap.com/img/new/standard/nature/184.jpg" id="foto-usuario-previa"
+                            class="card-img-top" alt="..." />
+                    </div>
+
+                    <input id="archivo-previo" class="file" data-browse-on-zone-click="true" type="file"
+                        accept="image/*" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn" data-mdb-dismiss="modal" style="background: #F7B733">
+                        Cerrar
+                    </button>
+                    <button type="button" class="btn btn-primary" id="Guardar" data-mdb-dismiss="modal"
+                        style="background: #4ABDAC">
+                        Aceptar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Series y Peliculas -->
+
+    <!-- Metodos de Pago -->
+    <div class="modal fade" id="VentanaModal" data-mdb-backdrop="static" data-mdb-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Cambiar imagen</h5>
+                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="border p-4 d-flex justify-content-center">
+                        <img src="https://mdbootstrap.com/img/new/standard/nature/184.jpg" id="foto-usuario-previa"
+                            class="card-img-top" alt="..." />
+                    </div>
+
+                    <input id="archivo-previo" class="file" data-browse-on-zone-click="true" type="file"
+                        accept="image/*" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn" data-mdb-dismiss="modal" style="background: #F7B733">
+                        Cerrar
+                    </button>
+                    <button type="button" class="btn btn-primary" id="Guardar" data-mdb-dismiss="modal"
+                        style="background: #4ABDAC">
+                        Aceptar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Metodos de Pago -->
 
     <!-- Ventana Modal para Cambiar imagen de perfil -->
     <div class="modal fade" id="VentanaModal" data-mdb-backdrop="static" data-mdb-keyboard="false" tabindex="-1"
@@ -144,6 +208,12 @@
                                     <label class="form-label" for="form6Example2">Número de Id</label>
                                 </div>
                             </div>
+                        </div>
+
+                        <!-- Nombres -->
+                        <div class="form-outline mb-4">
+                            <input type="text" id="nombrecompleto" class="form-control" />
+                            <label class="form-label" for="form6Example2">Nombre Completo</label>
                         </div>
 
                         <!-- Fecha de nacimiento -->
