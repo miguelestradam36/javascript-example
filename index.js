@@ -1,4 +1,6 @@
 let imagenPrevia = document.getElementById('foto-usuario-previa');
+let moviestable = document.getElementById("moviestable");
+let tableBody = document.getElementById("tableBody");
 
 //Crea el array de DATOS con propiedad y valor
 let datos = {
@@ -20,8 +22,10 @@ let moviesdata = {
 };
 
 function LoadUserInfo(datos){
+    //Set up the name that appears on the HTML
+    let nombreenhtml = document.getElementById("fullnameonfile");
+    nombreenhtml.textContent= datos['Nombre Completo'];
     //Trae el elemento <tbody> por medio del ID tableBody
-    let tableBody = document.getElementById("tableBody");
     tableBody.textContent = "";
     tableBody.innerHTML = "";
     //Recorre los elementos del array DATOS
@@ -51,9 +55,8 @@ function LoadUserInfo(datos){
     }
 }
 
-function LoadMoviesInfo(datos){
+function LoadMoviesInfo(moviesdata){
     //Trae el elemento <tbody> por medio del ID tableBody
-    let moviestable = document.getElementById("moviestable");
     moviestable.textContent = "";
     moviestable.innerHTML = "";
     //Recorre los elementos del array DATOS
@@ -65,6 +68,8 @@ function LoadMoviesInfo(datos){
         var tdDato = document.createElement('td');
         //Crea el segundo elemento <td> del <tr>
         var tdInfo = document.createElement('td');
+        //Crea el tercer elemento <td> del <tr>
+        var tdactiondelete = document.createElement('td');
 
         //Agrega un hijo al <td> de datos con el
         //texto de cada propiedad del array DATOS
@@ -72,11 +77,24 @@ function LoadMoviesInfo(datos){
         //Agrega un hijo al <td> de datos con el
         //texto de cada valor de la propiedad del array DATOS
         tdInfo.appendChild(document.createTextNode(moviesdata[propiedad]));
+        //Agrega un hijo al <td> de datos con el
+        //texto de cada valor de la propiedad del array DATOS
+        var deleteelement = document.createElement('button');
+        deleteelement.textContent = "Delete";
+        deleteelement.className = "btn btn-danger";
+        deleteelement.onclick = function(){
+            delete moviesdata[propiedad];
+            delete propiedad;
+            LoadMoviesInfo(moviesdata);
+        };
+        tdactiondelete.appendChild(deleteelement);
 
         //Asigna el hijo <td> de datos al padre <tr>
         tr.appendChild(tdDato);
         //Asigna el hijo <td> de información al padre <tr>
         tr.appendChild(tdInfo);
+        //Asigna el hijo <td> de información al padre <tr>
+        tr.appendChild(tdactiondelete);
 
         //Asigna el hijo <tr> al padre <tbody>
         moviestable.appendChild(tr);
@@ -85,12 +103,8 @@ function LoadMoviesInfo(datos){
 
 //Ejecuta una función al cargar la página Web en el navegador
 window.onload = function () {
-    //Set up the name that appears on the HTML
-    let nombreenhtml = document.getElementById("fullnameonfile");
-    nombreenhtml.textContent= datos['Nombre Completo']
-
     LoadUserInfo(datos);
-    LoadMoviesInfo(datos);
+    LoadMoviesInfo(moviesdata);
 };
 
 // ------------------------------------------------------------------------------------------------------
@@ -129,48 +143,38 @@ document.getElementById('Guardar').addEventListener('click', function (e) {
 // Changing Profile Data
 //Setting placeholder value for id number
 let idestado = document.getElementById("NumeroID");
-idestado.placeholder = datos['Número de Id'];
 idestado.value = datos['Número de Id'];
 
 let tipodeid = document.getElementById("tipoID");
-tipodeid.placeholder = datos['Tipo de Id'];
 tipodeid.value = datos['Tipo de Id'];
 
 let formname = document.getElementById("nombrecompleto");
-formname.placeholder = datos['Nombre Completo'];
 formname.value = datos['Nombre Completo'];
 
 let fechanacimiento = document.getElementById("fechaNacimiento");
-fechanacimiento.placeholder = datos['Fecha de nacimiento'];
 fechanacimiento.value = datos['Fecha de nacimiento'];
 
 let generoh = document.getElementById("GeneroH");
-generoh.placeholder = datos['Género'];
 generoh.value = datos['Género'];
 
 let phonenumber = document.getElementById("telefono");
-phonenumber.placeholder = datos['Teléfono'];
 phonenumber.value = datos['Teléfono'];
 
 let emailonf = document.getElementById("email");
-emailonf.placeholder = datos['Correo electrónico'];
 emailonf.value = datos['Correo electrónico'];
 
 let provincia = document.getElementById("provincia");
-provincia.placeholder = datos['Provincia'];
 provincia.value = datos['Provincia'];
 
 let canton = document.getElementById("canton");
-canton.placeholder = datos['Cantón'];
 canton.value = datos['Cantón'];
 
 let distrito = document.getElementById("distrito");
-distrito.placeholder = datos['Distrito'];
 distrito.value = datos['Distrito'];
 
 let direccion = document.getElementById("direccionExacta");
-direccion.placeholder = datos['Dirección exacta'];
 direccion.value = datos['Dirección exacta'];
+
 //Trae la información del elemento <input> con la propiedad FILE
 document.getElementById('GuardarPerfil').addEventListener('click', function (e) {
     datos['Dirección exacta'] = direccion.value;
@@ -184,7 +188,20 @@ document.getElementById('GuardarPerfil').addEventListener('click', function (e) 
     datos['Nombre Completo'] = formname.value;
     datos['Tipo de Id'] = tipodeid.value;
     datos['Número de Id'] = idestado.value;
-    LoadInfo(datos);
+    LoadUserInfo(datos);
 });
 // ------------------------------------------------------------------------------------------------------
 // Changing Profile Data End
+
+// ------------------------------------------------------------------------------------------------------
+// SECTION FOR MOVIES
+//Trae la información del elemento <input> con la propiedad FILE
+document.getElementById('GuardarPelicula').addEventListener('click', function (e) {
+    let moviename = document.getElementById("nombrepelicula").value;
+    let moviestatus = document.getElementById("estadopeli").value;
+    moviesdata[moviename] = moviestatus;
+    LoadMoviesInfo(moviesdata);
+});
+
+// SECTION FOR MOVIES END
+// ------------------------------------------------------------------------------------------------------
