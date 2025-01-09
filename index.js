@@ -48,6 +48,8 @@ window.onload = function () {
     }
 };
 
+// ------------------------------------------------------------------------------------------------------
+// Image change section
 //Trae la información del elemento <input> con la propiedad FILE
 document.getElementById("archivo-previo").addEventListener('change', function (e) {
 
@@ -75,7 +77,13 @@ document.getElementById('Guardar').addEventListener('click', function (e) {
     imagenUsuario.src = imagenPrevia.src;
 
 });
+// Image change section End
+// ------------------------------------------------------------------------------------------------------
 
+
+
+// ------------------------------------------------------------------------------------------------------
+// Changing Profile Data
 //Trae la información del elemento <input> con la propiedad FILE
 document.getElementById('GuardarPerfil').addEventListener('click', function (e) {
     let imagenUsuario = document.getElementById('foto-usuario');
@@ -84,3 +92,4 @@ document.getElementById('GuardarPerfil').addEventListener('click', function (e) 
 
 });
 
+// Changing Profile Data End
