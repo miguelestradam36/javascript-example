@@ -15,12 +15,58 @@ let datos = {
     'Dirección exacta': '300 norte Hospital San Juan de Dios'
 };
 
-//Ejecuta una función al cargar la página Web en el navegador
-window.onload = function () {
+// ------------------------------------------------------------------------------------------------------
+// Changing Profile Data
+//Setting placeholder value for id number
+let idestado = document.getElementById("NumeroID");
+idestado.placeholder = datos['Número de Id'];
+idestado.value = datos['Número de Id'];
 
+let tipodeid = document.getElementById("tipoID");
+tipodeid.placeholder = datos['Tipo de Id'];
+tipodeid.value = datos['Tipo de Id'];
+
+let formname = document.getElementById("nombrecompleto");
+formname.placeholder = datos['Nombre Completo'];
+formname.value = datos['Nombre Completo'];
+
+let fechanacimiento = document.getElementById("fechaNacimiento");
+fechanacimiento.placeholder = datos['Fecha de nacimiento'];
+fechanacimiento.value = datos['Fecha de nacimiento'];
+
+let generoh = document.getElementById("GeneroH");
+generoh.placeholder = datos['Género'];
+generoh.value = datos['Género'];
+
+let phonenumber = document.getElementById("telefono");
+phonenumber.placeholder = datos['Teléfono'];
+phonenumber.value = datos['Teléfono'];
+
+let emailonf = document.getElementById("email");
+emailonf.placeholder = datos['Correo electrónico'];
+emailonf.value = datos['Correo electrónico'];
+
+let provincia = document.getElementById("provincia");
+provincia.placeholder = datos['Provincia'];
+provincia.value = datos['Provincia'];
+
+let canton = document.getElementById("canton");
+canton.placeholder = datos['Cantón'];
+canton.value = datos['Cantón'];
+
+let distrito = document.getElementById("distrito");
+distrito.placeholder = datos['Distrito'];
+distrito.value = datos['Distrito'];
+
+let direccion = document.getElementById("direccionExacta");
+direccion.placeholder = datos['Dirección exacta'];
+direccion.value = datos['Dirección exacta'];
+
+function LoadInfo(datos){
     //Trae el elemento <tbody> por medio del ID tableBody
     let tableBody = document.getElementById('tableBody');
-
+    tableBody.textContent = "";
+    tableBody.innerHTML = "";
     //Recorre los elementos del array DATOS
     //y en cada iteración se muestra un elemento del array
     for (const propiedad in datos) {
@@ -46,6 +92,15 @@ window.onload = function () {
         //Asigna el hijo <tr> al padre <tbody>
         tableBody.appendChild(tr);
     }
+}
+
+//Ejecuta una función al cargar la página Web en el navegador
+window.onload = function () {
+    //Set up the name that appears on the HTML
+    let nombreenhtml = document.getElementById("fullnameonfile");
+    nombreenhtml.textContent= datos['Nombre Completo']
+
+    LoadInfo(datos);
 };
 
 // ------------------------------------------------------------------------------------------------------
@@ -69,7 +124,6 @@ document.getElementById("archivo-previo").addEventListener('change', function (e
         imagenPrevia.src = reader.result;
     };
 });
-
 //Trae la información del elemento <input> con la propiedad FILE
 document.getElementById('Guardar').addEventListener('click', function (e) {
     let imagenUsuario = document.getElementById('foto-usuario');
@@ -80,16 +134,20 @@ document.getElementById('Guardar').addEventListener('click', function (e) {
 // Image change section End
 // ------------------------------------------------------------------------------------------------------
 
-
-
-// ------------------------------------------------------------------------------------------------------
-// Changing Profile Data
 //Trae la información del elemento <input> con la propiedad FILE
 document.getElementById('GuardarPerfil').addEventListener('click', function (e) {
-    let imagenUsuario = document.getElementById('foto-usuario');
-
-    imagenUsuario.src = imagenPrevia.src;
-
+    datos['Dirección exacta'] = direccion.value;
+    datos['Distrito'] = distrito.value;
+    datos['Cantón'] = canton.value;
+    datos['Provincia'] = provincia.value;
+    datos['Correo electrónico'] = emailonf.value;
+    datos['Teléfono'] = phonenumber.value;
+    datos['Género'] = generoh.value;
+    datos['Fecha de nacimiento'] = fechanacimiento.value;
+    datos['Nombre Completo'] = formname.value;
+    datos['Tipo de Id'] = tipodeid.value;
+    datos['Número de Id'] = idestado.value;
+    LoadInfo(datos);
 });
-
+// ------------------------------------------------------------------------------------------------------
 // Changing Profile Data End
