@@ -14,6 +14,116 @@ let datos = {
     'Distrito': 'Moravia',
     'Dirección exacta': '300 norte Hospital San Juan de Dios'
 };
+//Crea el array de DATOS con propiedad y valor
+let moviesdata = {
+    'Star vs. the Forces of Evil': 'En lista'
+};
+
+function LoadUserInfo(datos){
+    //Trae el elemento <tbody> por medio del ID tableBody
+    let tableBody = document.getElementById("tableBody");
+    tableBody.textContent = "";
+    tableBody.innerHTML = "";
+    //Recorre los elementos del array DATOS
+    //y en cada iteración se muestra un elemento del array
+    for (const propiedad in datos) {
+        //Crea el elemento <tr>
+        var tr = document.createElement('tr');
+        //Crea el primer elemento <td> del <tr>
+        var tdDato = document.createElement('td');
+        //Crea el segundo elemento <td> del <tr>
+        var tdInfo = document.createElement('td');
+
+        //Agrega un hijo al <td> de datos con el
+        //texto de cada propiedad del array DATOS
+        tdDato.appendChild(document.createTextNode(propiedad));
+        //Agrega un hijo al <td> de datos con el
+        //texto de cada valor de la propiedad del array DATOS
+        tdInfo.appendChild(document.createTextNode(datos[propiedad]));
+
+        //Asigna el hijo <td> de datos al padre <tr>
+        tr.appendChild(tdDato);
+        //Asigna el hijo <td> de información al padre <tr>
+        tr.appendChild(tdInfo);
+
+        //Asigna el hijo <tr> al padre <tbody>
+        tableBody.appendChild(tr);
+    }
+}
+
+function LoadMoviesInfo(datos){
+    //Trae el elemento <tbody> por medio del ID tableBody
+    let moviestable = document.getElementById("moviestable");
+    moviestable.textContent = "";
+    moviestable.innerHTML = "";
+    //Recorre los elementos del array DATOS
+    //y en cada iteración se muestra un elemento del array
+    for (const propiedad in moviesdata) {
+        //Crea el elemento <tr>
+        var tr = document.createElement('tr');
+        //Crea el primer elemento <td> del <tr>
+        var tdDato = document.createElement('td');
+        //Crea el segundo elemento <td> del <tr>
+        var tdInfo = document.createElement('td');
+
+        //Agrega un hijo al <td> de datos con el
+        //texto de cada propiedad del array DATOS
+        tdDato.appendChild(document.createTextNode(propiedad));
+        //Agrega un hijo al <td> de datos con el
+        //texto de cada valor de la propiedad del array DATOS
+        tdInfo.appendChild(document.createTextNode(moviesdata[propiedad]));
+
+        //Asigna el hijo <td> de datos al padre <tr>
+        tr.appendChild(tdDato);
+        //Asigna el hijo <td> de información al padre <tr>
+        tr.appendChild(tdInfo);
+
+        //Asigna el hijo <tr> al padre <tbody>
+        moviestable.appendChild(tr);
+    }
+}
+
+//Ejecuta una función al cargar la página Web en el navegador
+window.onload = function () {
+    //Set up the name that appears on the HTML
+    let nombreenhtml = document.getElementById("fullnameonfile");
+    nombreenhtml.textContent= datos['Nombre Completo']
+
+    LoadUserInfo(datos);
+    LoadMoviesInfo(datos);
+};
+
+// ------------------------------------------------------------------------------------------------------
+// Image change section
+//Trae la información del elemento <input> con la propiedad FILE
+document.getElementById("archivo-previo").addEventListener('change', function (e) {
+
+    // Creamos el objeto de la clase FileReader
+    let reader = new FileReader();
+
+    // Leemos el archivo subido y se lo pasamos a nuestro fileReader
+    reader.readAsDataURL(e.target.files[0]);
+
+    // Le decimos que cuando este listo ejecute el código interno
+    reader.onload = function () {
+
+        //document.createElement('img');
+        imagenPrevia.style.maxWidth = "350px";
+        imagenPrevia.className = "card-img-top m-3";
+
+        imagenPrevia.src = reader.result;
+    };
+});
+//Trae la información del elemento <input> con la propiedad FILE
+document.getElementById('Guardar').addEventListener('click', function (e) {
+    let imagenUsuario = document.getElementById('foto-usuario');
+
+    imagenUsuario.src = imagenPrevia.src;
+
+});
+// Image change section End
+// ------------------------------------------------------------------------------------------------------
+
 
 // ------------------------------------------------------------------------------------------------------
 // Changing Profile Data
@@ -61,79 +171,6 @@ distrito.value = datos['Distrito'];
 let direccion = document.getElementById("direccionExacta");
 direccion.placeholder = datos['Dirección exacta'];
 direccion.value = datos['Dirección exacta'];
-
-function LoadInfo(datos){
-    //Trae el elemento <tbody> por medio del ID tableBody
-    let tableBody = document.getElementById('tableBody');
-    tableBody.textContent = "";
-    tableBody.innerHTML = "";
-    //Recorre los elementos del array DATOS
-    //y en cada iteración se muestra un elemento del array
-    for (const propiedad in datos) {
-        //Crea el elemento <tr>
-        var tr = document.createElement('tr');
-        //Crea el primer elemento <td> del <tr>
-        var tdDato = document.createElement('td');
-        //Crea el segundo elemento <td> del <tr>
-        var tdInfo = document.createElement('td');
-
-        //Agrega un hijo al <td> de datos con el
-        //texto de cada propiedad del array DATOS
-        tdDato.appendChild(document.createTextNode(propiedad));
-        //Agrega un hijo al <td> de datos con el
-        //texto de cada valor de la propiedad del array DATOS
-        tdInfo.appendChild(document.createTextNode(datos[propiedad]));
-
-        //Asigna el hijo <td> de datos al padre <tr>
-        tr.appendChild(tdDato);
-        //Asigna el hijo <td> de información al padre <tr>
-        tr.appendChild(tdInfo);
-
-        //Asigna el hijo <tr> al padre <tbody>
-        tableBody.appendChild(tr);
-    }
-}
-
-//Ejecuta una función al cargar la página Web en el navegador
-window.onload = function () {
-    //Set up the name that appears on the HTML
-    let nombreenhtml = document.getElementById("fullnameonfile");
-    nombreenhtml.textContent= datos['Nombre Completo']
-
-    LoadInfo(datos);
-};
-
-// ------------------------------------------------------------------------------------------------------
-// Image change section
-//Trae la información del elemento <input> con la propiedad FILE
-document.getElementById("archivo-previo").addEventListener('change', function (e) {
-
-    // Creamos el objeto de la clase FileReader
-    let reader = new FileReader();
-
-    // Leemos el archivo subido y se lo pasamos a nuestro fileReader
-    reader.readAsDataURL(e.target.files[0]);
-
-    // Le decimos que cuando este listo ejecute el código interno
-    reader.onload = function () {
-
-        //document.createElement('img');
-        imagenPrevia.style.maxWidth = "350px";
-        imagenPrevia.className = "card-img-top m-3";
-
-        imagenPrevia.src = reader.result;
-    };
-});
-//Trae la información del elemento <input> con la propiedad FILE
-document.getElementById('Guardar').addEventListener('click', function (e) {
-    let imagenUsuario = document.getElementById('foto-usuario');
-
-    imagenUsuario.src = imagenPrevia.src;
-
-});
-// Image change section End
-// ------------------------------------------------------------------------------------------------------
-
 //Trae la información del elemento <input> con la propiedad FILE
 document.getElementById('GuardarPerfil').addEventListener('click', function (e) {
     datos['Dirección exacta'] = direccion.value;

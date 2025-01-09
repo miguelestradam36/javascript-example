@@ -44,7 +44,7 @@
                         </button>
                     </div>
                     <br/>
-                    <!-- Mis mascotas -->
+                    <!-- Series -->
                     <div class="row text-center d-grid gap-2 m-2">
                         <button type="button" class="btn btn-dark btn-rounded" data-mdb-toggle="modal"
                             data-mdb-target="#Peliculas" style="background: #F7B733">
@@ -52,13 +52,6 @@
                         </button>
                     </div>
                     <br/>
-                    <!-- Método de pago -->
-                    <div class="row text-center d-grid gap-2 m-2">
-                        <button type="button" class="btn btn-dark btn-rounded" data-mdb-toggle="modal"
-                            data-mdb-target="#PagoEnLinea" style="background:  #333333">
-                            <i class="far fa-credit-card fa-2x me-2"></i>Métodos de pago
-                        </button>
-                    </div>
                 </div>
 
             </div>
@@ -93,25 +86,6 @@
                                 <tr>
                                     <th scope="col">Pelicula o Serie</th>
                                     <th scope="col">Estado</th>
-                                </tr>
-                            </thead>
-
-                            <tbody id="moviestable">
-
-                            </tbody>
-                        </table>
-                        
-                    </div>
-                </div>
-
-                <div class="card-body">
-                    <h3 class="card-title text-center my-3">Información de metodo de pago</h3>
-                    <div class="card-text">
-                        
-                        <table class="table">
-                            <thead class="table-dark" style="background: #4ABDAC">
-                                <tr>
-                                    <th scope="col">Metodo de pago</th>
                                 </tr>
                             </thead>
 
@@ -157,38 +131,6 @@
         </div>
     </div>
     <!-- Series y Peliculas -->
-
-    <!-- Metodos de Pago -->
-    <div class="modal fade" id="PagoEnLinea" data-mdb-backdrop="static" data-mdb-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Cambiar imagen</h5>
-                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="border p-4 d-flex justify-content-center">
-                        <img src="https://mdbootstrap.com/img/new/standard/nature/184.jpg" id="foto-usuario-previa"
-                            class="card-img-top" alt="..." />
-                    </div>
-
-                    <input id="archivo-previo" class="file" data-browse-on-zone-click="true" type="file"
-                        accept="image/*" />
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn" data-mdb-dismiss="modal" style="background: #F7B733">
-                        Cerrar
-                    </button>
-                    <button type="button" class="btn btn-primary" id="Guardar" data-mdb-dismiss="modal"
-                        style="background: #4ABDAC">
-                        Aceptar
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Metodos de Pago -->
 
     <!-- Ventana Modal para Cambiar imagen de perfil -->
     <div class="modal fade" id="VentanaModal" data-mdb-backdrop="static" data-mdb-keyboard="false" tabindex="-1"
